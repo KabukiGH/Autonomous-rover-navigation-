@@ -24,10 +24,12 @@ WB2 Implement the greedy version of the algorithm
 The problem is the uncertain environment in which the robot moves, containing obstacles. The agent must be able to collect information from third parties and re-use such information to achieve the destination. The agent must be also able to avoid obstacles in an uncertain surface.
 A greedy algorithm was used to program the robot, which, in order to determine the solution at each step, makes the most promising partial solution choice at that time. It used the sources collected, compared with the target behaviour and analysed taking into account the cost function.
 New features used in the algorithm:
+
 • New_state(position, action)
 The function takes as input the current position of the agent and the action number and returns the new state, depending on the planned action, where as action is considered: 0 - stop, 1 - move left, 2 - move up, 3 - move right, 4 - move down.
+
 • Control_algorithm(actual_position)
-Shown in figure 2.1.
+
 • Loop(actual_position)
 Used to obtain numerical simulation.
 
@@ -36,9 +38,11 @@ The Greedy algorithm is not a predictive algorithm, but in the case of a small g
 
 WP4: Implement routines to scale-up the problem to larger grids
 Extended verison of the project allows the user to generate an arbitrarily large grid and random obstacle’s positions or declare obstacles on specific fields. A size of grid is defined by user. In this version of the algorithm, the return_target(x) function has been modified to be universal, regardless of the grid size, but considers the grid as square. It uses the new target_direction() function, which contains all the calculations. Also modified the return_reward() function to be independent of the number of obstacles. To make the algorithm work properly, it was decided to write new function:
+
 • Rand_obstacle_location()
 The function draws obstacles at random locations. The number of obstacles depends on the size of the grid and is given by the formula:
 numer_of_obstacles = grid_dimension – 2
+
 • Simulation()
 This function was imported from the Simulation.py file to run the graphical simulation. It takes as input the dimension of the grid, the fields with obstacles and the subsequent movements of the agent.
 
