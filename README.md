@@ -4,14 +4,19 @@ Main goal of the task was to design a decision-making mechanism to enable autono
 
 WP1: analyze and understand the supporting code on elearning.
 The setup is as follows: an agent wants to navigate a 3-square wide grid, from bottom left to top right. The fields are numbered from 0 to 9. The middle square is an obstacle, represented by a very negative reward. The goal is to compare sources, coded as probability mass functions (pmfs), in order to select the best one at each step. For convenience, instead of using the whole state space as support for the pmfs, we reduce it to five possible actions: stay in place, move left, upwards, right downwards. The same principle was applied to reward lists.
+
 • FindWall(x)
 Function is used to distinguish the walls so that the robot does not travel beyond the edge of the grid. Function takes as an input the current position ot the agent, as an int value and returns an int list for each wall.
+
 • Return_target(x)
 Function is used to determine the target behavior of the agent. The function specified the diagonal of the grid from the start box to the target position. Fields below the diagonal specified the target behavior as going up, while fields above the diagonal specified it as going right. Thus, in a situation where there were no obstacles in the field, the agent would take the shortest path. Function takes as an input integer value equivalent to the square where agent is and returns the pmf corresponding to the target for this square.
+
 • Return_reward(x)
 Reward function takes as an input the position ot the agent, as an int value and returns reward, voded as a list of int values for current square. Square zero (the starting point) has a reward of -1, and square 4 (the middle) has a reward of -100. The rest of the squares have reward equal 0.
+
 • Return_sources(x)
 This function return the behavior of the sources for square x, where x is an input with a value of integer type. For each behavior, the function returns the corresponding pmf values. Then it calls the function FindWall(x). If the agent is at the wall, the corresponding move is replaced by "stay in place". The function returns a 4x5 matrix.
+
 • DKL(l1,l2)
 The source code also contains the DKL function, or Kullback-Leibler divergence, which is a measure of how one probability distribution is different from a second, reference probability distribution. As an input it takes 2 values and returns one value of float type.
 
